@@ -22,7 +22,7 @@ function playRound(playerSelection, computerSelection) {
     // Transform input to lower case to avoid hiccups
     playerSelection = capitalize(playerSelection);
 
-    let winCondition = (playerSelection == "Rock" && computerSelection == "Paper")
+    let winCondition = (playerSelection == "Rock" && computerSelection == "Scissors")
         || (playerSelection == "Paper" && computerSelection == "Rock")
         || (playerSelection == "Scissors" && computerSelection == "Paper");
 
@@ -32,13 +32,18 @@ function playRound(playerSelection, computerSelection) {
     } else if (winCondition) { // check for win
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     } else {
-        return `You Lost! ${playerSelection} beats ${computerSelection}`;
+        return `You Lost! ${playerSelection} loses to ${computerSelection}`;
+    }
+}
+
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playerSelection = prompt();
+        console.log(playRound(playerSelection, computerPlay()));
     }
 
 }
 
-console.log(playRound("ROCK", "Rock"));
-console.log(playRound("paper", "Rock"));
-console.log(playRound("SCissors", "Rock"));
-
+game();
 
