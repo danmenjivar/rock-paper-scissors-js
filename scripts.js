@@ -42,21 +42,37 @@ function playRound(playerSelection) {
 
 
 function game() {
-    // for (let i = 0; i < 5; i++) {
-    //     playerSelection = prompt();
-    //     console.log(playRound(playerSelection, computerPlay()));
-    // }
+
+    let playerTally = 0;
+    let computerTally = 0;
+
+    const results = document.querySelector("#results");
+
+    const rockButton = document.querySelector("#rock-btn");
+    rockButton.addEventListener('click', () => {
+        results.textContent += playRound('rock') + "\n";
+    });
+
+    const paperButton = document.querySelector("#paper-btn");
+    paperButton.addEventListener('click', () => results.textContent += playRound('paper') + "\n");
+
+    const scissorsButton = document.querySelector("#scissors-btn");
+    scissorsButton.addEventListener('click', () => results.textContent += playRound('scissors') + "\n");
+
+
+
+
+    // do {
+
+
+
+    // } while (playerTally < 5 || computerTally < 5);
 
 }
 
-const rockButton = document.querySelector("#rock-btn");
-rockButton.addEventListener('click', () => playRound('rock'));
 
-const paperButton = document.querySelector("#paper-btn");
-paperButton.addEventListener('click', () => playRound('paper'));
 
-const scissorsButton = document.querySelector("#scissors-btn");
-scissorsButton.addEventListener('click', () => playRound('scissors'));
+
 
 
 
