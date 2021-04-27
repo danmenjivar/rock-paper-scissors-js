@@ -17,10 +17,11 @@ function capitalize(str) {
 }
 
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
 
     // Transform input to lower case to avoid hiccups
     playerSelection = capitalize(playerSelection);
+    let computerSelection = computerPlay();
 
     let winCondition = (playerSelection == "Rock" && computerSelection == "Scissors")
         || (playerSelection == "Paper" && computerSelection == "Rock")
@@ -28,10 +29,13 @@ function playRound(playerSelection, computerSelection) {
 
     // check for a draw
     if (playerSelection === computerSelection) {
+        console.log("It's a draw!");
         return "It's a draw!";
     } else if (winCondition) { // check for win
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     } else {
+        console.log(`You Lost! ${playerSelection} loses to ${computerSelection}`);
         return `You Lost! ${playerSelection} loses to ${computerSelection}`;
     }
 }
@@ -46,7 +50,13 @@ function game() {
 }
 
 const rockButton = document.querySelector("#rock-btn");
-rockButton.addEventListener('click', (e) => console.log(e));
+rockButton.addEventListener('click', () => playRound('rock'));
+
+const paperButton = document.querySelector("#paper-btn");
+paperButton.addEventListener('click', () => playRound('paper'));
+
+const scissorsButton = document.querySelector("#scissors-btn");
+scissorsButton.addEventListener('click', () => playRound('scissors'));
 
 
 
