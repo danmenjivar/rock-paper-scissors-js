@@ -1,4 +1,7 @@
 
+
+var playerScore = 0;
+var computerScore = 0;
 // Function randomly returns rock, paper, or scissors
 function computerPlay() {
 
@@ -41,39 +44,34 @@ function playRound(playerSelection) {
 }
 
 
-function game() {
 
-    let playerTally = 0;
-    let computerTally = 0;
+function displayResult(roundResult) {
 
     const results = document.querySelector("#results");
 
-    const rockButton = document.querySelector("#rock-btn");
-    rockButton.addEventListener('click', () => {
-        results.textContent += playRound('rock') + "\n";
-    });
 
-    const paperButton = document.querySelector("#paper-btn");
-    paperButton.addEventListener('click', () => results.textContent += playRound('paper') + "\n");
+    if (roundResult.includes("Win")) {
+        playerScore++;
+    } else if (roundResult.includes("Lost")) {
+        computerScore++;
+    }
 
-    const scissorsButton = document.querySelector("#scissors-btn");
-    scissorsButton.addEventListener('click', () => results.textContent += playRound('scissors') + "\n");
+    results.innerHTML += `${roundResult} <br> You: ${playerScore} PC: ${computerScore} <hr>`;
 
-
-
-
-    // do {
-
-
-
-    // } while (playerTally < 5 || computerTally < 5);
 
 }
 
 
+function game() {
+    const rockButton = document.querySelector("#rock-btn");
+    rockButton.addEventListener('click', () => displayResult(playRound('rock')));
 
+    const paperButton = document.querySelector("#paper-btn");
+    paperButton.addEventListener('click', () => displayResult(playRound('paper')));
 
-
+    const scissorsButton = document.querySelector("#scissors-btn");
+    scissorsButton.addEventListener('click', () => displayResult(playRound('scissors')));
+}
 
 
 game();
