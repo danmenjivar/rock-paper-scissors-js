@@ -56,8 +56,36 @@ function displayResult(roundResult) {
         computerScore++;
     }
 
-    results.innerHTML += `${roundResult} <br> You: ${playerScore} PC: ${computerScore} <hr>`;
+    displayUpdatedScores();
 
+    results.innerHTML += `${roundResult} <br>`;
+
+
+
+
+    if (computerScore === 5 || playerScore === 5) {
+
+        if (computerScore === 5) {
+            results.innerHTML += `<hr> <b>Game Over!</b> Sorry, You Lost!<hr>`;
+        } else if (playerScore === 5) {
+            results.innerHTML += `<hr> <b>Game Over!</b> Congratulations, You Won!<hr>`;
+        }
+
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(button => button.disabled = true);
+
+    }
+
+
+}
+
+
+function displayUpdatedScores() {
+
+    const scores = document.querySelector("#scores");
+    scores.innerHTML = `<b>You</b>: ${playerScore} <b>PC</b>: ${computerScore}
+    <hr>`
 
 }
 
