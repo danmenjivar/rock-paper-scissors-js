@@ -75,6 +75,11 @@ function displayResult(roundResult) {
 
         buttons.forEach(button => button.disabled = true);
 
+        const playAgainBtn = document.createElement("button");
+        playAgainBtn.setAttribute("id", "play-again-btn");
+        playAgainBtn.textContent = "Play Again?";
+        document.querySelector("#results").appendChild(playAgainBtn);
+        playAgainBtn.onclick = () => newGame();
     }
 
 
@@ -86,8 +91,24 @@ function displayUpdatedScores() {
     const scores = document.querySelector("#scores");
     scores.innerHTML = `<b>You</b>: ${playerScore} <b>PC</b>: ${computerScore}
     <hr>`
+}
+
+function newGame() {
+    playerScore = 0;
+    computerScore = 0;
+    console.log("new game");
+    document.querySelector("#results").innerHTML = "";
+    document.querySelector("#scores").innerHTML = `<b>You</b>: 0 <b>PC</b>: 0
+    <hr>`;
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach(button => button.disabled = false);
 
 }
+
+
+
+
 
 
 function game() {
