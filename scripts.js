@@ -45,5 +45,10 @@ function game() {
 
 }
 
+const rockButton = document.querySelector("#rock-btn");
+rockButton.addEventListener('click', (e) => console.log(e));
+
+
+
 game();
 
